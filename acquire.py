@@ -1,0 +1,70 @@
+from env import get_db_url
+import pandas as pd
+import os
+import pandas as pd
+
+
+def get_telco_data():
+    """
+    get telco data will query the telco database and return all the relevant churn data within
+    arguments: none
+    return: a pandas dataframe
+    """
+    filename = "telco.csv"
+    if os.path.isfile(filename):
+        df = pd.read_csv(filename)
+    else:
+        query = """
+        select *
+        from customers
+        left join contract_types
+            using (contract_type_id)
+        left join internet_service_types
+            using (internet_service_type_id)
+        left join payment_types
+            using (payment_type_id)
+        """
+        connection = get_db_url("telco_churn")
+        df = pd.read_sql(query, connection)
+        df.to_csv(filename, index=False)
+    return df
+
+
+def get_iris_data():
+    """
+    get iris will query the iris database and return all the data within
+    arguments: none
+    return: a pandas dataframe
+    """
+    filename = "iris.csv"
+    if os.path.isfile(filename):
+        df = pd.read_csv(filename)
+    else:
+        query = """
+        SELECT *
+        FROM measurements
+        JOIN species
+        USING (species_id);"""
+        connection = get_db_url("iris_db")
+        df = pd.read_sql(query, connection)
+        df.to_csv(filename, index=False)
+    return df
+
+
+def get_titanic_data():
+    """
+    get titanic data will query the titanic database and return all the data within
+    arguments: none
+    return: a pandas dataframe
+    """
+    filename = "titanic.csv"
+    if os.path.isfile(filename):
+        df = pd.read_csv(filename)
+    else:
+        query = "SELECT * FROM passengers"
+        connection = get_db_url("titanic_db")
+        df = pd.read_sql(query, connection)
+        df.to_csv(filename, index=False)
+    return df
+
+
