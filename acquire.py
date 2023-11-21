@@ -6,9 +6,8 @@ import pandas as pd
 
 def get_telco_data():
     """
-    get telco data will query the telco database and return all the relevant churn data within
-    arguments: none
-    return: a pandas dataframe
+    takes in no argument, will query the telco database 
+    returns the telco query as a pandas dataframe
     """
     filename = "telco.csv"
     if os.path.isfile(filename):
@@ -32,9 +31,8 @@ def get_telco_data():
 
 def get_iris_data():
     """
-    get iris will query the iris database and return all the data within
-    arguments: none
-    return: a pandas dataframe
+    takes in no argument and
+    returns iris database query as a pandas dataframe
     """
     filename = "iris.csv"
     if os.path.isfile(filename):
@@ -53,9 +51,8 @@ def get_iris_data():
 
 def get_titanic_data():
     """
-    get titanic data will query the titanic database and return all the data within
-    arguments: none
-    return: a pandas dataframe
+    takes in no arguments and 
+    returns the titanic database query a pandas dataframe
     """
     filename = "titanic.csv"
     if os.path.isfile(filename):
