@@ -6,7 +6,7 @@ import numpy as np
 
 
 def prep_iris(df):
-    '''takes in the iris dataframe and returns the dataframe
+    '''takes in the iris dataframe as an argument and returns the dataframe
     with unnecessary columns dropped and the [species] column name changed for easier reading. 
     '''
     df.drop(columns=['species_id', 'measurement_id'], inplace=True)
@@ -19,7 +19,7 @@ def prep_iris(df):
 
 def clean_titanic(df):
     """
-    Takes in the Titanic DataFrame and returns the Dataframe with unnecessary columns dropped, 
+    Takes in the Titanic DataFrame as an argument and returns the Dataframe with unnecessary columns dropped, 
     casts [pclass] column to object since it will be handled as object, and
     fills null values for [embark_town] with the column mode.
     """
@@ -35,7 +35,7 @@ def clean_titanic(df):
 
 
 def prep_telco(df):
-    '''takes in the telco churn dataframe and returns the dataframe
+    '''Takes in the telco churn dataframe as an argument and returns the dataframe
     with unnecessary columns dropped and empty values in the [total_charges] column
     changed from a blank space to a zero.
     '''
@@ -50,9 +50,9 @@ def prep_telco(df):
 
 def split_data(df, target):
     """
-    takes in a DataFrame and target, returns a train, validate, and test DataFrame
-    while stratifying on the target variable. Prints the percentage of the new dataframes 
-    compared to the original.
+    This function takes in any DataFrame and a target variable as an argument 
+    and returns train, validate, and test variables stratifying on the target variable.
+    It returns these variables as DataFrames with a printout of their proportion to the original DataFrame.
     """
     train, validate_test = train_test_split(
         df, train_size=0.6, random_state=123, stratify=df[target]
