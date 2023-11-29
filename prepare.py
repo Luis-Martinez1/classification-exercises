@@ -23,7 +23,7 @@ def clean_titanic(df):
     casts [pclass] column to object since it will be handled as object, and
     fills null values for [embark_town] with the column mode.
     """
-    df = df.drop(columns=['embarked', 'age','deck', 'class'])
+    df = df.drop(columns=['passenger_id', 'embarked', 'age','deck', 'class'])
     df.pclass = df.pclass.astype(object)
     df.embark_town = df.embark_town.fillna('Southampton')
     return df
