@@ -39,7 +39,7 @@ def prep_telco(df):
     with unnecessary columns dropped and empty values in the [total_charges] column
     changed from a blank space to a zero.
     '''
-    df.drop(columns=['payment_type_id', 'internet_service_type_id', 'contract_type_id', 'customer_id'], inplace=True)
+    df.drop(columns=['payment_type_id', 'internet_service_type_id', 'contract_type_id'], inplace=True)
     df.total_charges = df.total_charges.str.replace(' ', '0.0')
     df.internet_service_type.fillna('No internet service', inplace = True)
     df['total_charges'] = df['total_charges'].astype(float)
