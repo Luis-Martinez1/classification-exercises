@@ -44,6 +44,8 @@ def prep_telco(df):
     df.internet_service_type.fillna('No internet service', inplace = True)
     df['total_charges'] = df['total_charges'].astype(float)
     df['senior_citizen'].replace({0:'No', 1: 'Yes'}, inplace=True)
+    df = df.set_index('customer_id')
+
     return df
 
 
